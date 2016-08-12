@@ -1,0 +1,40 @@
+.rsp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 90%;
+    word-wrap: break-word;
+    background-color: white;
+    z-index: 9999;
+}
+
+.rsp .close-button {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    transform: translate(-100%);
+    padding: 5px;
+    color: rgb(175, 175, 175);
+    cursor: pointer;
+}
+
+.rsp .close-button:hover {
+    color: rgb(75, 75, 75);
+}
+
+.rsp .content {
+    padding: 20px;
+}
+
+.rsp-hide {
+    display: none;
+}
+
+.rsp-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.6);
+}
