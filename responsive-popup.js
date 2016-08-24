@@ -22,7 +22,7 @@ ResponsivePopup.prototype.open = function (obj) {
     this.popup = $(obj.content).wrap("<div class='rsp'></div>");
 
     if (obj.closeBtn) {
-        this.popup.prepend("<div class='close-button' onclick='rsp.close();'><i class='fa fa-times' aria-hidden='true'></i></div>");
+        this.popup.prepend("<div class='close-button' onclick='rsp.close();'><p>X</p></div>");
     }
 
     $("body").append(
