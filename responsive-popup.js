@@ -46,3 +46,5 @@ ResponsivePopup.prototype.close = function() {
 
     $("body").css("overflow", "auto");
 };
+
+var rsp = new ResponsivePopup();
