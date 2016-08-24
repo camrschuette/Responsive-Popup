@@ -13,7 +13,7 @@ ResponsivePopup.prototype.open = function (obj) {
     }
 
     /** Default Values */
-    if (obj.closeBtn == null) {
+    if (!obj.closeBtn || obj.closeBtn == null) {
         obj.closeBtn = true;
     }
 
@@ -30,7 +30,10 @@ ResponsivePopup.prototype.open = function (obj) {
                 "class" : "rsp-overlay",
                 "onclick" : "rsp.close()"
             }
-        ));
+        )
+    );
+
+    $("body").css("overflow", "hidden");
 };
 
 ResponsivePopup.prototype.close = function() {
@@ -40,4 +43,6 @@ ResponsivePopup.prototype.close = function() {
     this.popup.addClass('rsp-hide');
 
     $('.rsp-overlay').remove();
+
+    $("body").css("overflow", "auto");
 };
