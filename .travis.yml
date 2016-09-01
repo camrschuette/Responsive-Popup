@@ -1,3 +1,4 @@
+language: node_js
 before_script:
-  - sudo npm install uglify-js -g
+  - npm install -g uglify-js
 script: uglifyjs --compress --mangle -- simple-popup.js
