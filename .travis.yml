@@ -1,4 +1,9 @@
 language: node_js
+
 before_script:
   - npm install -g uglify-js
-script: uglifyjs --compress --mangle -- simple-popup.js
+
+script: uglifyjs simple-popup.js --compress --mangle --output simple-popup.min.js
+
+notifications:
+  email: false
