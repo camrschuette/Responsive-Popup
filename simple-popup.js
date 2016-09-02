@@ -1,8 +1,29 @@
-function ResponsivePopup () {
+function SimplePopup () {
+
     this.popup = null;
+
+    this._transitionOnEnter = "";
+
+    this._transitionOnExit = "";
+
+    this.defaults = {
+
+        closeBtn:  true,
+
+        transition: {
+            onOpen: null,
+
+            onClose: null
+        }
+    };
 }
 
-ResponsivePopup.prototype.open = function (obj) {
+SimplePopup.prototype.open = function (obj) {
+    /** Check if already popup */
+    if (this.popup != null) {
+        this.close();
+    }
+
     /** Required Params */
     if (obj.content == null) {
         console.error("No body content included");
@@ -16,6 +37,12 @@ ResponsivePopup.prototype.open = function (obj) {
     if (!obj.closeBtn || obj.closeBtn == null) {
         obj.closeBtn = true;
     }
+    if (!obj.transition || obj.transition == null) {
+        obj.transition = this.defaults.transition;
+    }
+
+    /** apply the values */
+    this._getTransition(obj.transition);
 
     $(obj.content).removeClass('rsp-hide');
     $(obj.content).addClass('content');
@@ -27,7 +54,7 @@ ResponsivePopup.prototype.open = function (obj) {
 
     $("body").append(
         $("<div>", {
-                "class" : "rsp-overlay",
+                "class" : "rsp-overlay " + this._transitionOnEnter,
                 "onclick" : "rsp.close()"
             }
         )
@@ -36,7 +63,7 @@ ResponsivePopup.prototype.open = function (obj) {
     $("body").css("overflow", "hidden");
 };
 
-ResponsivePopup.prototype.close = function() {
+SimplePopup.prototype.close = function() {
     $('.rsp .close-button').remove();
     this.popup.unwrap();
 
@@ -47,4 +74,30 @@ ResponsivePopup.prototype.close = function() {
     $("body").css("overflow", "auto");
 };
 
-var rsp = new ResponsivePopup();
+SimplePopup.prototype._getTransition = function(obj) {
+
+    switch (obj.onEnter) {
+        case "slide":
+            this._transitionOnEnter = "slide";
+            break;
+        case "fade":
+            this._transitionOnEnter = "fade";
+            break;
+        default:
+            break;
+    }
+
+    switch (obj.onExit) {
+        case "slide":
+            this._transitionOnExit = "slide";
+            break;
+        case "fade":
+            this._transitionOnExit = "fade";
+            break;
+        default:
+            break;
+    }
+
+};
+
+var rsp = new SimplePopup();
