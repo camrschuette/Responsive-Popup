@@ -3,15 +3,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     max-width: 600px;
     width: 90%;
     max-height: 90%;
     height: auto;
-
     word-wrap: break-word;
     background-color: white;
     z-index: 9999;
+    overflow: auto;
 }
 
 .rsp .close-button {
